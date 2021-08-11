@@ -18,7 +18,13 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "dev:build": "docker build --target=development -t cart-dev .",
+    "dev:run": "docker run --rm -dp 5000:4000 cart-dev",
+    "dev": "npm run dev:build && npm run dev:run",
+    "prod:build": "docker build -t cart-prod .",
+    "prod:run": "docker run --rm -dp 4000:4000 cart-prod",
+    "prod": "npm run prod:build && npm run prod:run"
   },
   "dependencies": {
     "@nestjs/common": "^7.5.1",
